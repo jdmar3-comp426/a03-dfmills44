@@ -42,23 +42,29 @@ export function getIncreasingArray(startNumber, endNumber) {
  * and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
  */
 export function maxAndMin(numbers) {
+    const data = {
+        min: 0,
+        max: 0
+    }
     var len = numbers.length;
     if (len == 0) {
         return "Error: Empty Array";
     }
-    var min = numbers[0];
+    var minNum = numbers[0];
     for (var i = 1; i < len; i++) {
-        if (numbers[i] < min) {
-            min = numbers[i];
+        if (numbers[i] < minNum) {
+            minNum = numbers[i];
         }
     }
-    var max = numbers[0];
+    var maxNum = numbers[0];
     for (var i = 1; i < len; i++) {
-        if (numbers[i] > max) {
-            max = numbers[i];
+        if (numbers[i] > maxNum) {
+            maxNum = numbers[i];
         }
     }
-    return "min: " + min + ", max: " + max;
+    data.min = minNum;
+    data.max = maxNum;
+    return data;
 }
 
 /**
@@ -83,7 +89,6 @@ export function countArray(array) {
                 val++;
             }
         }
-        console.log(val);
         for (var j = 0; j < val; j++) {
             var ind = array.indexOf(key);
             array.splice(ind, 1);

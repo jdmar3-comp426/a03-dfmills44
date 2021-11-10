@@ -104,7 +104,7 @@ export function removeKeys(object, keyList) {
    var len = keyList.length;
    var newObj = Object.assign({}, object);
    for (var i = 0; i < len; i++) {
-      newObj.removeKey(keyList[i]);
+      removeKey(newObj, keyList[i]);
    }
    return newObj;
 }

@@ -133,10 +133,8 @@ export function getStatistics(array) {
     var variance = 0;
     for (var k = 0; k < array.length; k++) {
         var add = (array[k] - data.mean)
-        console.log(add);
         variance += (add * add);
     }
-    console.log(variance);
     data.variance = variance / array.length;
     data.standard_deviation = Math.sqrt(data.variance);
     data.median = getMedian(array);

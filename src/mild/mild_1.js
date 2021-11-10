@@ -53,13 +53,13 @@ export function maxAndMin(numbers) {
     var minNum = numbers[0];
     for (var i = 1; i < len; i++) {
         if (numbers[i] < minNum) {
-            minNum = numbers[i];
+            minNum = numbers[i].toString();
         }
     }
     var maxNum = numbers[0];
     for (var i = 1; i < len; i++) {
         if (numbers[i] > maxNum) {
-            maxNum = numbers[i];
+            maxNum = numbers[i].toString();
         }
     }
     data.min = minNum;

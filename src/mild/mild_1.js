@@ -62,8 +62,8 @@ export function maxAndMin(numbers) {
             maxNum = numbers[i];
         }
     }
-    data.min = minNum;
-    data.max = maxNum;
+    data.min = parseInt(minNum);
+    data.max = parseInt(maxNum);
     return data;
 }
 

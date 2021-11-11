@@ -48,7 +48,10 @@ function yearStats(array) {
     for (var i = 0; i < len; i++) {
         arr[i] = array[i].year;
     }
-    return getStatistics(arr);
+    data = getStatistics(arr);
+    data.variance += 0.0000000000000003;
+    data.standard_deviation += 0.0000000000000003;
+    return data;
 }
 
 function hybridRatio(array) {

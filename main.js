@@ -1,7 +1,9 @@
-import {getSum} from './src/medium/medium_1.js'
-import {getMedian} from './src/medium/medium_1.js'
-import {getStatistics} from './src/medium/medium_1.js'
+import {allCarStats} from './src/medium/medium_2.js'
+import {moreStats} from './src/medium/medium_2.js'
 
-console.log(getSum([1, 3, 5, -2, 6]))
-console.log(getMedian([3,7,5,6,2,2,4,2,7,5]));
-console.log(getStatistics([3,2,4,5,5,5,2,6,7]));
+console.log(allCarStats.avgMpg);
+console.log(allCarStats.allYearStats);
+console.log(allCarStats.ratioHybrids);
+
+console.log(moreStats.makerHybrids);
+console.log(moreStats.avgMpgByYearAndHybrid);

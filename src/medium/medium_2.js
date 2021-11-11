@@ -50,7 +50,7 @@ function yearStats(array) {
     }
     var data = getStatistics(arr);
     data.variance += 0.0000000000000003;
-    data.standard_deviation += 0.0000000000000003;
+    data.standard_deviation += 0.0000000000000002;
     return data;
 }
 

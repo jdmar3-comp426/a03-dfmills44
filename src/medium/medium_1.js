@@ -130,12 +130,7 @@ export function getStatistics(array) {
         }
     }
     data.max = max;
-    var variance = 0;
-    for (var k = 0; k < array.length; k++) {
-        var add = (array[k] - data.mean)
-        variance += (add * add);
-    }
-    data.variance = variance / array.length;
+    data.variance = variance(array, data.mean);
     data.standard_deviation = Math.sqrt(data.variance);
     data.median = getMedian(array);
     return data;

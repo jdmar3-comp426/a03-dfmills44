@@ -59,7 +59,33 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
  *
  */
 export function searchMpg(car_data, minCity, minHighway) {
-
+    var len = car_data.length;
+    var tempArr = [];
+    var tempLoc = 0;
+    for (var i = 0; i < len; i++) {
+        if (car_data[i].city_mpg >= minCity && car_data[i].highway_mpg >= minHighway) {
+            tempArr[tempLoc] = car_data[i];
+            tempLoc++;
+        }
+    }
+    var tempArrLen = tempArr.length;
+    var loc = 0;
+    var finalArr = [];
+    while (tempArrLen != 0) {
+        var max = 0;
+        var maxInd = -1;
+        for (var i = 0; i < tempArrLen; i++) {
+            if (max < tempArr[i].highway_mpg) {
+                max = tempArr[i].highway_mpg;
+                maxInd = i;
+            }
+        }
+        finalArr[loc] = tempArr[maxInd];
+        tempArr.splice(maxInd, 1);
+        tempArrLen--;
+        loc++;
+    }
+    return finalArr;
 }
 
 

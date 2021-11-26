@@ -93,7 +93,19 @@ export const tenTimesFifty = () => {
  *    everyEven([1, 1, 0, 1, 1], x => x === 1)  <--  returns false
  */
 export const everyEven = (arr, test) => {
-
+    var arrLen = arr.length;
+    var pass = true;
+    var element = 0;
+    while (element < arrLen) {
+        if (!test(arr[element])) {
+            pass = false;
+        }
+        element += 2;
+    }
+    if (pass) {
+        return true;
+    }
+    return false;
 };
 
 

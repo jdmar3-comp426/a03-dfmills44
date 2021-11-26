@@ -98,7 +98,42 @@ export function searchMpg(car_data, minCity, minHighway) {
  * @returns {[]} array of cars
  */
 export function searchName(car_data, searchTerm) {
-
+    var tempArr = [];
+    var finalArr = [];
+    var tempLoc = 0;
+    for (var i = 0; i < car_data.length; i++) {
+        var included = car_data[i].id.includes(searchTerm);
+        if (included) {
+            var j = 0;
+            while (included) {
+                included = car_data[i].id.includes(searchTerm, j);
+                j++;
+            }
+            j--;
+            tempArr[tempLoc] = {
+                car: car_data[i],
+                pos: j
+            }
+            tempLoc++;
+        }
+    }
+    var len = tempArr.length;
+    var finalLoc = 0;
+    while (len != 0) {
+        var min = 10000
+        var minLoc = 0;
+        for (var i = 0; i < len; i++) {
+            if (tempArr[i].pos < min) {
+                min = tempArr[i].pos;
+                minLoc = i;
+            }
+        }
+        finalArr[finalLoc] = tempArr[minLoc].car;
+        finalLoc++;
+        tempArr.splice(minLoc, 1);
+        len--;
+    }
+    return finalArr;
 }
 
 

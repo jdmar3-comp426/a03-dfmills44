@@ -146,5 +146,28 @@ export function searchName(car_data, searchTerm) {
  * @returns {[]} an array of car objects
  */
 export function searchByYear(car_data, years) {
-
+    var finalArr = [];
+    var yearsLen = years.length;
+    while (yearsLen != 0) {
+        var minYear = 10000
+        var minYearInd = 0;
+        for (var i = 0; i < yearsLen; i++) {
+            if (years[i] < minYear) {
+                minYear = years[i];
+                minYearInd = i;
+            }
+        }
+        years.splice(minYearInd, 1);
+        yearsLen--;
+        var tempArr = [];
+        var tempLoc = 0;
+        for (var i = 0; i < car_data.length; i++) {
+            if (car_data[i].year == minYear) {
+                tempArr[tempLoc] = car_data[i];
+                tempLoc++;
+            }
+        }
+        finalArr.push(tempArr);
+    }
+    return finalArr;
 }

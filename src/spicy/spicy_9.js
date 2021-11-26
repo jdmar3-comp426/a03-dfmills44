@@ -167,7 +167,21 @@ export const someEven = (arr, test) => {
  *       -->  { pass: [1, 5, 31], fail: [90] }
  */
 export const filter = (arr, test) => {
-
+    var arrLen = arr.length;
+    var passArr = [];
+    var failArr = [];
+    for (var i = 0; i < arrLen; i++) {
+        if (test(arr[i])) {
+            passArr.push(arr[i]);
+        } else {
+            failArr.push(arr[i]);
+        }
+    }
+    var data = {
+        pass: passArr,
+        fail: failArr
+    };
+    return data;
 };
 
 

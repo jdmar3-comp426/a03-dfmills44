@@ -129,7 +129,19 @@ export const everyEven = (arr, test) => {
  *    someEven([0, 0, 0, 0, 0], x => x === 0)  <--  returns true
  */
 export const someEven = (arr, test) => {
-
+    var arrLen = arr.length;
+    var pass = false;
+    var element = 0;
+    while (element < arrLen) {
+        if (test(arr[element])) {
+            pass = true;
+        }
+        element += 2;
+    }
+    if (pass) {
+        return true;
+    }
+    return false;
 };
 
 

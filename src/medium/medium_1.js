@@ -8,7 +8,12 @@ import {variance} from "./data/stats_helpers.js";
  * prototype functions. Very useful
  */
 export function getSum(array) {
-
+    var len = array.length;
+    var sum = 0;
+    for (var i = 0; i < len; i++) {
+        sum = sum + array[i];
+    }
+    return sum;
 }
 
 
@@ -22,7 +27,60 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-
+    var len = array.length;
+    if (len % 2 == 1) {
+        var iter = (len - 1) / 2;
+        for (var i = 0; i < iter; i++) {
+            var min = array[0];
+            var curLen = array.length;
+            for (var j = 1; j < curLen; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                }
+            }
+            var max = array[0];
+            for (var k = 1; k < curLen; k++) {
+                if (array[k] > max) {
+                    max = array[k];
+                }
+            }
+            var minIndex = array.indexOf(min);
+            var maxIndex = array.indexOf(max);
+            array.splice(minIndex, 1);
+            if (maxIndex > minIndex){
+                array.splice(maxIndex - 1, 1);
+            } else {
+                array.splice(maxIndex, 1);
+            }
+        }
+        return array[0];
+    } else {
+        var iter = (len / 2) - 1;
+        for (var i = 0; i < iter; i++) {
+            var min = array[0];
+            var curLen = array.length;
+            for (var j = 1; j < curLen; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                }
+            }
+            var max = array[0];
+            for (var k = 1; k < curLen; k++) {
+                if (array[k] > max) {
+                    max = array[k];
+                }
+            }
+            var minIndex = array.indexOf(min);
+            var maxIndex = array.indexOf(max);
+            array.splice(minIndex, 1);
+            if (maxIndex > minIndex){
+                array.splice(maxIndex - 1, 1);
+            } else {
+                array.splice(maxIndex, 1);
+            }
+        }
+        return (array[0] + array[1]) / 2;
+    }
 }
 
 /**
@@ -45,6 +103,35 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
-
+    var data = {
+        length: 0,
+        sum: 0,
+        mean: 0,
+        median: 0,
+        min: 0,
+        max: 0,
+        variance: 0,
+        standard_deviation: 0
+    }
+    data.length = array.length;
+    data.sum = getSum(array);
+    data.mean = data.sum / data.length;
+    var min = array[0];
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] < min) {
+            min = array[i];
+        }
+    }
+    data.min = min;
+    var max = array[0];
+    for (var j = 0; j < array.length; j++) {
+        if (array[j] > max) {
+            max = array[j];
+        }
+    }
+    data.max = max;
+    data.variance = variance(array, data.mean);
+    data.standard_deviation = Math.sqrt(data.variance);
+    data.median = getMedian(array);
+    return data;
 }
-
